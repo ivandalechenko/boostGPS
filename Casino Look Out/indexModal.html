@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CasinoLookOut</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.min.css" />
+  <style>
+    .modal {
+      position: fixed;
+      width: 100dvw;
+      height: 100dvh;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 99;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .modal_inner {
+      width: 100%;
+      max-width: 300px;
+      background: black;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      flex-wrap: wrap;
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .modal_content {
+      margin-top: 20px;
+      color: white;
+      text-align: center;
+    }
+
+    .modal_btn {
+      margin-top: 20px;
+    }
+
+    #confirm {
+      width: 100%;
+      background-color: #20ae5c;
+      color: white;
+      border: none;
+      border-radius: 10px;
+    }
+
+    #confirm:hover {
+      opacity: 0.7;
+      cursor: pointer;
+    }
+
+    #close {
+      width: 100%;
+      margin-top: 10px;
+      border: none;
+      border-radius: 10px;
+
+    }
+
+    #close:hover {
+      opacity: 0.7;
+      cursor: pointer;
+    }
+
+    .dnone {
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="modal" class="modal">
+    <div class="modal_inner">
+      <img src="images/18.png" alt="">
+      <div class="modal_content">
+        To access the full content of this website you should confirm that you are over 18 years old
+      </div>
+      <div class="modal_btn">
+        <button id="confirm">Confirm</button>
+        <button id="close">Close</button>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper">
+    <header class="header" id="header">
+      <div class="header__inner">
+        <div class="container">
+          <div class="header__box">
+            <a class="logo" href="./"><img src="./images/logo.png" alt="" /> <span>CasinoLook </span>Out
+            </a>
+
+            <div class="header__mobile" id="mm">
+              <nav class="menu">
+                <ul class="menu__list">
+                  <li class="menu__item">
+                    <a class="menu__link hover__underline" href="./">Home</a>
+                  </li>
+                  <li class="menu__item">
+                    <a class="menu__link hover__underline" href="./#props">Casino Hotels</a>
+                  </li>
+                  <li class="menu__item">
+                    <a class="menu__link hover__underline" href="./cookies.html">Cookies</a>
+                  </li>
+                  <li class="menu__item">
+                    <a class="menu__link hover__underline" href="./terms.html">Terms</a>
+                  </li>
+                  <li class="menu__item">
+                    <a class="menu__link hover__underline" href="./privacy.html">Policy</a>
+                  </li>
+                </ul>
+              </nav>
+              <a href="./#footer"> <button class="btn header__btn">Booking</button></a>
+            </div>
+            <div class="menu__btn-of menu__btn" id="mmopener">
+              <svg width="27" height="18" viewBox="0 0 27 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M1.5 0.5C0.671573 0.5 0 1.17157 0 2C0 2.82843 0.671573 3.5 1.5 3.5H25C25.8284 3.5 26.5 2.82843 26.5 2C26.5 1.17157 25.8284 0.5 25 0.5H1.5ZM0 9C0 8.17157 0.671573 7.5 1.5 7.5H25C25.8284 7.5 26.5 8.17157 26.5 9C26.5 9.82843 25.8284 10.5 25 10.5H1.5C0.671573 10.5 0 9.82843 0 9ZM0 16C0 15.1716 0.671573 14.5 1.5 14.5H25C25.8284 14.5 26.5 15.1716 26.5 16C26.5 16.8284 25.8284 17.5 25 17.5H1.5C0.671573 17.5 0 16.8284 0 16Z"
+                  fill="#fff" />
+              </svg>
+
+            </div>
+            <div class="menu__btn-on menu__btn hidden" id="mmcloser">
+              <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M3.06066 0.93934C2.47487 0.353553 1.52513 0.353553 0.93934 0.93934C0.353553 1.52513 0.353553 2.47487 0.93934 3.06066L8.37868 10.5L0.93934 17.9393C0.353553 18.5251 0.353553 19.4749 0.93934 20.0607C1.52513 20.6464 2.47487 20.6464 3.06066 20.0607L10.5 12.6213L17.5563 19.6777C18.1421 20.2635 19.0919 20.2635 19.6777 19.6777C20.2635 19.0919 20.2635 18.1421 19.6777 17.5563L12.6213 10.5L19.6777 3.44365C20.2635 2.85787 20.2635 1.90812 19.6777 1.32233C19.0919 0.736544 18.1421 0.736545 17.5563 1.32233L10.5 8.37868L3.06066 0.93934Z"
+                  fill="#fff" />
+              </svg>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header__top">
+        <div class="container">
+          <div class="header__top-title title">
+            YOUR FAVORITE SPOT TO PLAY
+            <span>Leading Pokies Locations in Australia</span>
+          </div>
+          <div class="header__top-box">
+            <div class="header__top-box--img">
+              <img src="./images/topText.png" alt="" />
+            </div>
+            <div class="header__top-box--info">
+              <div class="header__top-box--title">
+                Explore Our Wide Range of Services
+              </div>
+              <div class="header__top-box--text">
+                Discover the thrilling universe of gaming in our vast casino space.
+                Experience the vibrant energy of pokies and the captivating
+                environment of the poker tables. Our casino serves as a hub for all
+                the excitement. Catering to both experienced and novice players,
+                our welcoming team and a variety of games ensure an enjoyable experience
+                for everyone.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="items" id="props">
+        <div class="container">
+          <div class="item__box">
+            <div class="item">
+              <div class="item__hours">
+                Opening hours : monday- sunday (12 p.m - 10 a.m.)
+              </div>
+              <div class="item__img">
+                <img src="./images/item1.avif" alt="" />
+                <div class="item__img-text">
+                  Crown Casino
+                </div>
+              </div>
+              <div class="item__text meow">
+                Crown Casino in Melbourne, perched on the banks of the Yarra River,
+                stands as an emblem of luxury and entertainment. As Australia's
+                largest gaming institution, it caters to a wide range of preferences,
+                offering a multitude of gaming choices including a broad array of pokies.
+                The casino's breathtaking views of Melbourne's skyline and the Yarra River
+                create an unforgettable gaming experience
+              </div>
+              <div class="item__btn-box ">
+                <a href="./#footer" class="item__btn" style="margin-bottom: 10px">Booking</a>
+                <a href="https://www.crownperth.com.au/casino" class="item__btn">Link</a>
+              </div>
+            </div>
+            <div class="item">
+              <div class="item__hours">
+                Opening hours : monday- sunday (12 p.m - 12 a.m.)
+              </div>
+              <div class="item__img">
+                <img src="./images/item2.webp" alt="" />
+                <div class="item__img-text">
+                  The Treasury Casino
+                </div>
+              </div>
+              <div class="item__text meow">
+                Located in the heart of Queensland, The Treasury Brisbane offers a vibrant 24/7
+                gaming experience with a variety of gaming options. It offers a vibrant and
+                diverse gaming experience, catering to a variety of preferences. This high-end
+                resort is not just a casino but a lively social destination in Brisbane
+              </div>
+              <div class="item__btn-box minifix">
+                <a href="./#footer" class="item__btn" style="margin-bottom: 10px">Booking</a>
+                <a href="https://www.treasurybrisbane.com.au/" class="item__btn">Link</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="bitem">
+            <div class="item__hours">
+              Opening hours : monday- sunday (11 p.m - 09 a.m.)
+            </div>
+            <div class="item__img meow3">
+              <img src="./images/item3.webp" class="sf2" alt="" />
+              <div class="item__img-text">
+                The Ville Resort-Casino
+              </div>
+              <div class="item__btn-box">
+                <a href="./#footer" class="item__btn sf" style="margin-bottom: 10px">Booking</a>
+                <a href="https://www.the-ville.com.au/" class="item__btn sf">Link</a>
+              </div>
+            </div>
+            <div class="item__text">
+              The Ville Resort-Casino in Townsville, Queensland, offers an exciting gaming experience
+              with over 370 gaming machines, including a variety of pokies, and more than 20 table games,
+              ensuring an entertaining and diverse environment for its guests
+            </div>
+          </div>
+
+          <div class="item__box">
+            <div class="item">
+              <div class="item__hours">
+                Opening hours : monday- sunday (05 p.m - 12 a.m.)
+              </div>
+              <div class="item__img meow2">
+                <img src="./images/item4.webp" alt="" />
+                <div class="item__img-text">Adelaide Casino </div>
+              </div>
+              <div class="item__text meow">
+                Adelaide Casino, located in the heart of Adelaide, spans three levels
+                and offers an exceptional gaming experience with a vast array of pokies
+                , including numerous pokies, and a wide variety of card games
+              </div>
+              <div class="item__btn-box">
+                <a href="./#footer" class="item__btn" style="margin-bottom: 10px">Booking</a>
+                <a href="https://skycityadelaide.com.au/" class="item__btn">Link</a>
+              </div>
+            </div>
+            <div class="item">
+              <div class="item__hours">
+                Opening hours : monday- sunday (10 p.m - 10 a.m.)
+              </div>
+              <div class="item__img meow2">
+                <img src="./images/item5.webp" alt="" />
+                <div class="item__img-text">Star City Casino </div>
+              </div>
+              <div class="item__text meow">
+                Star City Casino in Sydney is a sophisticated gaming center featuring an array of pokies,
+                luxurious dining options, vibrant bars, and top-tier hotels, catering to both casual gamers
+                and high rollers
+              </div>
+              <div class="item__btn-box">
+                <a href="./#footer" class="item__btn" style="margin-bottom: 10px">Booking</a>
+                <a href="https://www.star.com.au/sydney/" class="item__btn">Link</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" id="footer">
+      <div class="footer__inner">
+        <div class="container">
+          <div class="footer__box">
+            <a class="logo" href="./"><img src="./images/logo.png" alt="" /> <span> CasinoLook</span>Out
+            </a>
+            <div class="footer__text title">
+              Let’s discuss for booking you <span>cool</span> weekend
+            </div>
+          </div>
+          <div class="footer__form">
+            <div class="box">
+              <input type="text" placeholder="Your name">
+              <input type="text" placeholder="Your email">
+              <textarea name="message" placeholder="Your message"></textarea>
+            </div>
+
+
+            <a href="./">
+              <div class="footer__form-btn">Send Message</div>
+            </a>
+          </div>
+
+          <nav class="footer__menu">
+            <ul class="menu__list">
+              <li class="menu__item">
+                <a class="menu__link hover__underline" href="./">Home</a>
+              </li>
+              <li class="menu__item">
+                <a class="menu__link hover__underline" href="./#props">Casino Hotels</a>
+              </li>
+              <li class="menu__item">
+                <a class="menu__link hover__underline" href="./cookies.html">Cookies</a>
+              </li>
+              <li class="menu__item">
+                <a class="menu__link hover__underline" href="./terms.html">Terms</a>
+              </li>
+              <li class="menu__item">
+                <a class="menu__link hover__underline" href="./privacy.html">Policy</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+    </footer>
+  </div>
+  <script>
+    document.getElementById('confirm').onclick = () => {
+      alert('confirm')
+    }
+    document.getElementById('close').onclick = () => {
+      alert('close')
+    }
+  </script>
+  <script src="js/main.min.js"></script>
+</body>
+
+</html>
